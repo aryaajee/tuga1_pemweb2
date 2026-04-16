@@ -1,3 +1,5 @@
+import React from "react";
+
 interface SpeakerCardProps {
   name: string;
   role: string;
@@ -10,21 +12,45 @@ export const SpeakerCard: React.FC<SpeakerCardProps> = ({
   imageUrl,
 }) => {
   return (
-    <div className="cursor-pointer flex flex-col items-center gap-4 group">
-      <div className="relative h-1/3 z-1">
+    <div className="cursor-pointer flex flex-col items-center gap-6 group">
+      {/* Foto Sepatu dengan Border Lingkaran */}
+      <div className="relative z-10">
         <img
           src={imageUrl}
           alt={name}
-          className="h-64 w-64 rounded-full border-10 border-red-900 mx-auto group-hover:scale-105 transition-transform duration-300 object-cover"
+          className="h-64 w-64 rounded-full border-[8px] border-black mx-auto 
+                     group-hover:scale-105 transition-transform duration-300 
+                     object-cover shadow-lg"
         />
       </div>
-      <div className="cursor-pointer flex flex-col items-center h-2/3 border-4 border-red-900 w-full p-4 rounded-lg relative py-10 shadow-xl shadow-black/20 group-hover:shadow-2xl group-hover:shadow-black/40 transition-all duration-300">
-        //card overlay
-        <div className="absolute bottom-0 px-4 py-6 rounded-lg w-full h-full flex flex-col items-center gap-2 group-hover:bg-red-200 backdrop-blur-sm transition-all duration-300"></div>
-        <div className="absolute left-0 right-0 bottom-0 items-center justify-center p-4 flex flex-col gap-2">
-          <h3 className="text-2xl text-red-900 font-semibold">{name}</h3>
-          <p className="text-sm text-gray-600 text-center">{role}</p>
+
+      {/* Card Informasi */}
+      <div
+        className="flex flex-col items-center w-full p-6 rounded-xl relative 
+                   border-2 border-black bg-white
+                   shadow-xl shadow-black/20 
+                   group-hover:shadow-2xl group-hover:shadow-black/40 
+                   transition-all duration-300 overflow-hidden"
+      >
+        {/* Overlay Hover */}
+        <div
+          className="absolute inset-0 bg-red-600/0 
+                     group-hover:bg-red-600/10 
+                     transition-all duration-300"
+        ></div>
+
+        {/* Konten Teks */}
+        <div className="relative z-10 flex flex-col items-center gap-2 text-center">
+          <h3 className="text-2xl font-semibold text-black">
+            {name}
+          </h3>
+          <p className="text-sm text-gray-600">
+            {role}
+          </p>
         </div>
+
+        {/* Aksen Garis Merah di Bawah */}
+        <div className="mt-4 w-16 h-1 bg-red-600 rounded-full"></div>
       </div>
     </div>
   );
